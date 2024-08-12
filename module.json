@@ -1,8 +1,8 @@
 {
     "title": "Template",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "main",
     "date": 1716589100,
-    "source": "antevasin.app",
+    "source": "antevasin.app/module-template",
     "description": "Template module for the Antevasin Plugin"
 }

@@ -10,7 +10,7 @@ print_rr("setting up $module_name module...");
 
 // print_rr($module_path); print_rr($module_name);
 
-$render_module_function = '>render_module_index()';
+$render_module_function = '>render()';
 $module_title = ucfirst( $module_name );
 $files = array( 
     'action' => array( 
@@ -27,7 +27,7 @@ $files = array(
     ), 
     'index' => array( 
         'path' => $module_path . 'views' . DIRECTORY_SEPARATOR . 'index.php',
-        'contents' => '<?php' . PHP_EOL . PHP_EOL . 'namespace Antevasin;' . PHP_EOL . PHP_EOL . "$$module_name-$render_module_function;"
+        'contents' => '<?php' . PHP_EOL . PHP_EOL . 'namespace Antevasin;' . PHP_EOL . PHP_EOL . "\$index = new index( $$module_name );" . PHP_EOL . "\$index-$render_module_function;"
     ), 
     'module_json' => array( 
         'overwrite' => true,
