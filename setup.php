@@ -10,6 +10,7 @@ print_rr("setting up $module_name module...");
 
 // print_rr($module_path); print_rr($module_name);
 
+$version = '1.0.5';
 $render_module_function = '>render()';
 $module_title = ucfirst( $module_name );
 $files = array( 
@@ -37,7 +38,7 @@ $files = array(
         'overwrite' => true,
         'path' => $module_path,
         'file' => 'module.json',
-        'contents' => '{' . PHP_EOL . "\t" . '"title": "' . $module_title . '",' . PHP_EOL . "\t" . '"version": "1.0.0",' . PHP_EOL . "\t" . '"status": "main",' . PHP_EOL . "\t" . '"date": ' . time() . ',' . PHP_EOL . "\t" . '"source": "antevasin-app/module-template",' . PHP_EOL . "\t" . '"description": "' . $module_title . ' module for the Antevasin plugin"' . PHP_EOL . '}'
+        'contents' => '{' . PHP_EOL . "\t" . '"title": "' . $module_title . '",' . PHP_EOL . "\t" . '"version": "' . $version . '",' . PHP_EOL . "\t" . '"status": "main",' . PHP_EOL . "\t" . '"date": ' . time() . ',' . PHP_EOL . "\t" . '"source": "antevasin-app/module-template",' . PHP_EOL . "\t" . '"description": "' . $module_title . ' module for the Antevasin plugin"' . PHP_EOL . '}'
     ), 
     'module_top' => array( 
         'path' => $module_path,
