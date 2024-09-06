@@ -37,7 +37,7 @@ $files = array(
         'overwrite' => true,
         'path' => $module_path,
         'file' => 'module.json',
-        'contents' => '{' . PHP_EOL . "\t" . '"title": "' . $module_title . '",' . PHP_EOL . "\t" . '"version": "1.0.0",' . PHP_EOL . "\t" . '"status": "main",' . PHP_EOL . "\t" . '"date": ' . time() . ',' . PHP_EOL . "\t" . '"source": "antevasin.app",' . PHP_EOL . "\t" . '"description": "' . $module_title . ' module for the Antevasin plugin"' . PHP_EOL . '}'
+        'contents' => '{' . PHP_EOL . "\t" . '"title": "' . $module_title . '",' . PHP_EOL . "\t" . '"version": "1.0.0",' . PHP_EOL . "\t" . '"status": "main",' . PHP_EOL . "\t" . '"date": ' . time() . ',' . PHP_EOL . "\t" . '"source": "antevasin-app/module-template",' . PHP_EOL . "\t" . '"description": "' . $module_title . ' module for the Antevasin plugin"' . PHP_EOL . '}'
     ), 
     'module_top' => array( 
         'path' => $module_path,
@@ -56,7 +56,7 @@ foreach ( $files as $file => $file_info )
         $file_contents = $file_info['contents'];
         if ( !file_exists( $path ) )
         {
-            print_rr("creating $path");
+            print_rr("creating path $path");
             mkdir( $path, 0711, true );
         }
         // print_rr($file_path);
