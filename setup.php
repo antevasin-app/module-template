@@ -14,28 +14,34 @@ $render_module_function = '>render()';
 $module_title = ucfirst( $module_name );
 $files = array( 
     'action' => array( 
-        'path' => $module_path . 'actions' . DIRECTORY_SEPARATOR . $module_name . '.php',
+        'path' => $module_path . 'actions' . DIRECTORY_SEPARATOR,
+        'file' => $module_name . '.php',
         'contents' => '<?php' . PHP_EOL . PHP_EOL . 'namespace Antevasin;'
     ), 
     'js' => array( 
-        'path' => $module_path . 'components' . DIRECTORY_SEPARATOR . $module_name . '.js.php',
+        'path' => $module_path . 'components' . DIRECTORY_SEPARATOR,
+        'file' => $module_name . '.js.php',
         'contents' => '<?php' . PHP_EOL . PHP_EOL . 'namespace Antevasin;' . PHP_EOL . PHP_EOL . '?>' . PHP_EOL . 'var ' . $module_name . ' = ' . $module_name . ' || {};'
     ), 
     'class' => array( 
-        'path' => $module_path . 'includes' . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . $module_name . '.php', 
+        'path' => $module_path . 'includes' . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR,
+        'file' => $module_name . '.php', 
         'contents' => '<?php' . PHP_EOL . PHP_EOL . 'namespace Antevasin;' . PHP_EOL . PHP_EOL . 'class ' . $module_name . ' extends core implements module' . PHP_EOL . '{' . PHP_EOL . '    public function __construct()' . PHP_EOL . '    {' . PHP_EOL . '        parent::__construct( \'' . $module_name . '\' );' . PHP_EOL . '    }' . PHP_EOL . '}'
     ), 
     'index' => array( 
-        'path' => $module_path . 'views' . DIRECTORY_SEPARATOR . 'index.php',
+        'path' => $module_path . 'views' . DIRECTORY_SEPARATOR,
+        'file' => 'index.php',
         'contents' => '<?php' . PHP_EOL . PHP_EOL . 'namespace Antevasin;' . PHP_EOL . PHP_EOL . "\$index = new index( $$module_name );" . PHP_EOL . "\$index-$render_module_function;"
     ), 
     'module_json' => array( 
         'overwrite' => true,
-        'path' => $module_path . 'module.json',
+        'path' => $module_path,
+        'file' => 'module.json',
         'contents' => '{' . PHP_EOL . "\t" . '"title": "' . $module_title . '",' . PHP_EOL . "\t" . '"version": "1.0.0",' . PHP_EOL . "\t" . '"status": "main",' . PHP_EOL . "\t" . '"date": ' . time() . ',' . PHP_EOL . "\t" . '"source": "antevasin.app",' . PHP_EOL . "\t" . '"description": "' . $module_title . ' module for the Antevasin plugin"' . PHP_EOL . '}'
     ), 
     'module_top' => array( 
-        'path' => $module_path . 'module_top.php', 
+        'path' => $module_path,
+        'file' => 'module_top.php', 
         'contents' => '<?php' . PHP_EOL . PHP_EOL . 'namespace Antevasin;' . PHP_EOL . PHP_EOL . "$$module_name = new $module_name();"
     ), 
 );
@@ -45,12 +51,19 @@ foreach ( $files as $file => $file_info )
     $$file = false;
     if ( isset( $file_info['contents'] ) )
     {
-        $file_path = $file_info['path'];
+        $path = $file_info['path'];
+        $file_path = $path . $file_info['file'];
         $file_contents = $file_info['contents'];
+        if ( !file_exists( $path ) )
+        {
+            print_rr("creating $path");
+            mkdir( $path, 0711, true );
+        }
+        // print_rr($file_path);
         if ( !file_exists( $file_path ) || ( isset( $file_info['overwrite'] ) && $file_info['overwrite'] ) ) $$file = file_put_contents( $file_path, $file_contents );
     }
 }
-
+// die(print_rr('pause'));
 if ( $action && $js && $class && $index && $module_json && $module_top )
 {
     foreach ( $files as $file_to_check )
