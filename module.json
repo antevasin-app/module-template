@@ -3,6 +3,6 @@
     "version": "1.0.1",
     "status": "main",
     "date": 1716589100,
-    "source": "antevasin.app/module-template",
+    "source": "antevasin-app/module-template",
     "description": "Template module for the Antevasin Plugin"
 }
