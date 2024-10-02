@@ -26,8 +26,10 @@ Unzip to your **plugins/antevasin/modules** directory
 
 This will create **plugin/antevasin/modules/template** directory. To change the name of the plugin then you just have rename this directory to the module name of your choice. It is recommended to make the module name a single descriptive word that matches what the module will do or handle like **readme**, **projects**, **store** etc Ensuring it doesn't conflict with any of the existing modules is easy as you can't have two folders with the same name under the modules directory. 
 
->[!NOTE]
->Any reserved names will be updated here as they are discovered.
+>NOTE
+>Any reserved names will be updated here as they are discovered. They are 
+
+>new
 
 Open your Rukovoditel instance in a browser. You will see an output similar to the following showing the files which have been created / updated...
 
